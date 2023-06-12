@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './styles/highlight.css';
 import hljs from 'highlight.js';
 
-const HighlightingContent = ({ value, resultRef }: any) => {
-
+const HighlightingContent = ({ value }: any) => {
+  const resultRef = React.useRef<any>(null);
   useEffect(() => {
     let updatedText = value;
 

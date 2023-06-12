@@ -7,8 +7,6 @@ import HighlightingContent from "./components/Highlight";
 function App() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
-  const textAreaRef = React.useRef<any>(null);
-  const resultRef = React.useRef<any>(null);
 
 
   const openModal = () => {
@@ -31,11 +29,13 @@ function App() {
 
   const handleChange = (event: any) => {
     setValue(event.target.value);
+    handleSyncScroll(event.target)
   };
 
-  const handleSyncScroll = () => {
-    resultRef.current.scrollTop = textAreaRef.current.scrollTop;
-    resultRef.current.scrollLeft = textAreaRef.current.scrollLeft;
+  const handleSyncScroll = (element: any) => {
+    let result_element = document.querySelector("#highlighting") as any;
+    result_element.scrollTop = element.scrollTop;
+    result_element.scrollLeft = element.scrollLeft;
   };
 
   const handleKeyDown = (event: any) => {
@@ -91,12 +91,11 @@ function App() {
             id="editing"
             spellCheck="false"
             value={value}
-            ref={textAreaRef}
             onChange={handleChange}
-            onScroll={handleSyncScroll}
+            onScroll={(event) =>handleSyncScroll(event.target)}
             onKeyDown={handleKeyDown}
           ></textarea>
-          <HighlightingContent value={value} resultRef={resultRef} />
+          <HighlightingContent value={value} />
           <button type="submit" id="submit">
             Submit
           </button>
