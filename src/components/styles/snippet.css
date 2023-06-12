@@ -1,0 +1,8 @@
+.snippet{
+  font-family: "Fira Code", monospace;
+  width: 450px;
+  height: 200px;
+  overflow: auto;
+  font-size: 12px;
+  padding: 1em !important;
+}
