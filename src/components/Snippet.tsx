@@ -1,10 +1,13 @@
 import Highlight from 'react-highlight'
+// import "highlight.js/styles/atom-one-dark.css"
+
 import './styles/snippet.css'
-// import 'highlight.js/styles/atom-one-dark.css'
+
 const Snippet = () => {
   return (
     <>
-    <Highlight className="go snippet">
+
+    <Highlight className="snippet">
       {
 `
 package main

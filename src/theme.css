@@ -1,0 +1,10 @@
+.monokai {
+  @import 'highlight.js/styles/monokai.css';
+}
+
+.solarized-dark {
+  @import 'highlight.js/styles/solarized-dark.css';
+}
+.atom-one-dark {
+  @import 'highlight.js/styles/atom-one-dark.css';
+}

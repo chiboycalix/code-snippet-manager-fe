@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './styles/highlight.css';
 import hljs from 'highlight.js';
 
-const HighlightingContent = ({ value }: any) => {
+const HighlightingContent = ({ value, language }: any) => {
   const resultRef = React.useRef<any>(null);
   useEffect(() => {
     let updatedText = value;
@@ -16,12 +16,12 @@ const HighlightingContent = ({ value }: any) => {
       resultRef.current.innerHTML = highlightedText;
     }
     hljs.highlightElement(resultRef.current);
-  }, [value, resultRef]);
+  }, [value, language]);
 
   return (
     <div>
       <pre id="highlighting" aria-hidden="true">
-        <code className='language-html' id="highlighting-content" ref={resultRef}></code>
+        <code className={`language-${language}`} id="highlighting-content" ref={resultRef}></code>
       </pre>
     </div>
   );
