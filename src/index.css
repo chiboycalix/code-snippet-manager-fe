@@ -3,7 +3,6 @@
 @tailwind utilities;
 body {
   width: 100vw;
-  /* font-family: 'Fira Code', monospace; */
   font-family: 'Roboto', sans-serif;
   padding: 0;
   margin: 0;

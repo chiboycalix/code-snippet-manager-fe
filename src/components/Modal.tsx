@@ -27,7 +27,7 @@ const Modal = ({ isOpen, onClose, children }: any) => {
   return (
     <div className="modal-overlay">
 
-    <div className="modal" ref={modalRef}>
+    <div className="modal border-2 border-indigo-500/100" ref={modalRef}>
       <div className="modal-content">
         <span className="close-icon" onClick={() => onClose(false)}>
           &times;
