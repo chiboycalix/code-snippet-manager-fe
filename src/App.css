@@ -1,23 +1,4 @@
 
-.app-wrapper{
-  padding: 0 1rem;
-}
-button {
-  background-color: #06b874;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #45a049;
-}
-button#submit {
-  position: absolute;
-  top: 81%;
-  margin-top: 20px;
-}
 form {
   width: 100%;
   display: flex;

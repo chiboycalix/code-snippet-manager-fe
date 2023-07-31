@@ -1,13 +1,11 @@
 import Highlight from 'react-highlight'
-// import "highlight.js/styles/atom-one-dark.css"
-
 import './styles/snippet.css'
 
 const Snippet = () => {
   return (
     <>
 
-    <Highlight className="snippet">
+    <Highlight className="h-60">
       {
 `
 package main
@@ -17,7 +15,6 @@ import (
     "time"
 
     "github.com/gofiber/fiber/v2"
-    "github.com/gofiber/fiber/v2/middleware/limiter"
 )
 
 func main() {

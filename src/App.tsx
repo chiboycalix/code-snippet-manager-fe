@@ -3,12 +3,12 @@ import Snippets from "./pages/Snippets";
 import "./App.css";
 import Modal from "./components/Modal";
 import HighlightingContent from "./components/Highlight";
+
 function App() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
   const [language, setLanguage] = React.useState("html");
-  const [theme, setTheme] = React.useState('atom-one-dark');
-  const [highlighter, setHighlighter] = React.useState(null);
+  const [theme, setTheme] = React.useState([{label: 'Monakai', value: 'monakai'}, {label: "Solarized Dark", value:"solarized-dark"}]);
 
   const openModal = () => {
     setIsOpen(true);
@@ -58,31 +58,30 @@ function App() {
     }
   };
 
+  const handleChangeTheme = (event: any) => {
+    console.log({ event: event.target })
+    setTheme([])
+  }
 
-  React.useEffect(() => {
-    console.log(theme)
-    const loadHighlighter = async () => {
-      /* @vite-ignore */
-      const themeModule = await import(`highlight.js/styles/${theme}.css`);
-    };
-
-    loadHighlighter();
-  }, [theme]);
-  
-console.log({highlighter})
   return (
-    <div className="app-wrapper">
-      <h1>Code Snippets Manager</h1>
-      <button onClick={openModal}>New Snippet</button>
-      <select value={theme} onChange={(event) => setTheme(event.target.value)}>
-        <option value="monokai">Monokai</option>
-        <option value="solarized-dark">Solarized Dark</option>
-        {/* Add more theme options as needed */}
+    <div className="w-full p-2">
+      <h1 className="text-center text-xl my-4 sm:text-4xl">Code Snippet Manager</h1>
+      <div className="flex flex-col gap-4 justify-between items-center
+                      sm:flex-row
+      ">
+      <button onClick={openModal} className="bg-green-700 py-2 px-3 rounded-md w-full my-4
+        sm:w-60
+      ">Create Snippet</button>
+      <select className="w-full py-2 px-3 sm:w-60">
+        {theme.map((theme) => {
+          return <option value={theme.value} key={theme.label} onChange={(value) => handleChangeTheme(value)}>{theme.label}</option>
+        })}
       </select>
+      </div>
       <Snippets />
       <Modal isOpen={isOpen} onClose={closeModal}>
         <form onSubmit={handleSubmit}>
-          <select id="language" name="language" onChange={(event) => setLanguage(event.target.value)}>
+          <select id="language" name="language" onChange={(event) => setLanguage(event.target.value)} className="">
             <option value="">Select language</option>
             <option value="html">HTML</option>
             <option value="css">CSS</option>
@@ -109,6 +108,7 @@ console.log({highlighter})
             onChange={handleChange}
             onScroll={(event) =>handleSyncScroll(event.target)}
             onKeyDown={handleKeyDown}
+            // className="mt-8 absolute w-full"
           ></textarea>
           <HighlightingContent value={value} language={language}/>
           <button type="submit" id="submit">

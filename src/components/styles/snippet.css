@@ -1,8 +1,7 @@
-.snippet{
-  font-family: "Fira Code", monospace;
-  width: 450px;
-  height: 200px;
-  overflow: auto;
-  font-size: 12px;
-  padding: 1em !important;
+@media screen and (min-width: 375px) {
+  pre code.hljs {
+    overflow-x: auto;
+    padding: 0rem 1rem 0rem 1rem !important;
+    width: 362px !important;
+  }
 }
